@@ -1,7 +1,7 @@
-import org.w3c.dom.Node;
-
 public class BinaryST<K extends Comparable<K>, V> {
     private Node root;
+    private int s;
+
     private class Node{
         private K key;
         private V val;
@@ -16,8 +16,9 @@ public class BinaryST<K extends Comparable<K>, V> {
     }
 
     private Node put(Node current, K key, V val) {
-        if (current == null)
-            return new Node(key, val);
+        if (current == null){
+            s++;
+            return new Node(key, val);}
         int c = key.compareTo(current.key);
         if (c < 0)
             current.left = put(current.left, key, val);
@@ -62,15 +63,18 @@ public class BinaryST<K extends Comparable<K>, V> {
             if (current.left == null && current.right == null) {
                 return null;
             }
-            if (current.right == null)
-                return current.left;
-            if (current.left  == null)
-                return current.right;
+            if (current.right == null){
+                s--;
+                return current.left;}
+            if (current.left  == null){
+                s--;
+                return current.right;}
 
             Node t = current;
             current = Min(t.right);
             current.right = deletemin(t.right);
             current.left = t.left;
+            s--;
         }
         return current;
     }
@@ -99,5 +103,9 @@ public class BinaryST<K extends Comparable<K>, V> {
 
     public Iterable<K> iterator(){
         return null;
+    }
+
+    public int size() {
+        return s;
     }
 }
