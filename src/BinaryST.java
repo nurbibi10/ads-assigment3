@@ -49,22 +49,30 @@ public class BinaryST<K extends Comparable<K>, V> {
     private Node delete(Node current, K key) {
         if (current == null)
             return null;
-        int cmp = key.compareTo(current.key);
-        if (cmp < 0)
+        int c = key.compareTo(current.key);
+        if (c > 0)
             current.left  = delete(current.left,  key);
-        else if (cmp > 0)
+        else if (c < 0)
             current.right = delete(current.right, key);
         else {
+            if (current.left == null && current.right == null) {
+                return null;
+            }
             if (current.right == null)
                 return current.left;
             if (current.left  == null)
                 return current.right;
+
             Node t = current;
             current = Min(t.right);
             current.right = deletemin(t.right);
             current.left = t.left;
         }
         return current;
+    }
+
+    public void deletemin(){
+        root = deletemin(root);
     }
 
     private Node deletemin(Node current) {
@@ -74,14 +82,18 @@ public class BinaryST<K extends Comparable<K>, V> {
         return current;
     }
 
+    public K Min(){
+        return Min(root).key;
+    }
+
     private Node Min(Node current) {
         if (current.left == null)
-            return current;
+            return null;
         else
-            return Min(current.left);
+            return Min(current);
     }
 
     public Iterable<K> iterator(){
-
+        return null;
     }
 }
