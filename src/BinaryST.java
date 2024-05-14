@@ -37,9 +37,9 @@ public class BinaryST<K extends Comparable<K>, V> {
         if (current == null) {
             return null;
         }
-        if (c > 0)
-            return get(current.left, key);
         if (c < 0)
+            return get(current.left, key);
+        else if (c > 0)
             return get(current.right, key);
 
         return current.val;
@@ -54,9 +54,9 @@ public class BinaryST<K extends Comparable<K>, V> {
         if (current == null)
             return null;
         int c = key.compareTo(current.key);
-        if (c > 0)
+        if (c < 0)
             current.left  = delete(current.left,  key);
-        else if (c < 0)
+        else if (c > 0)
             current.right = delete(current.right, key);
         else {
             if (current.left == null && current.right == null) {
