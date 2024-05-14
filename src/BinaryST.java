@@ -18,10 +18,10 @@ public class BinaryST<K extends Comparable<K>, V> {
     private Node put(Node current, K key, V val) {
         if (current == null)
             return new Node(key, val);
-        int cm = key.compareTo(current.key);
-        if (cm < 0)
+        int c = key.compareTo(current.key);
+        if (c < 0)
             current.left = put(current.left, key, val);
-        else if (cm > 0)
+        else if (c > 0)
             current.right = put(current.right, key, val);
         else
             current.val = val;
