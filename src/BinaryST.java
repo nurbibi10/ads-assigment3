@@ -29,18 +29,22 @@ public class BinaryST<K extends Comparable<K>, V> {
     }
 
     public V get(K key) {
-        Node current = root;
-        while (current != null) {
-            int cmp = key.compareTo(current.key);
-            if (cmp < 0)
-                current = current.left;
-            else if (cmp > 0)
-                current = current.right;
-            else
-                return current.val;
-        }
-        return null;
+        return get(root, key);
     }
+
+    private V get(Node current, K key) {
+        int c = key.compareTo(current.key);
+        if (current == null) {
+            return null;
+        }
+        if (c > 0)
+            return get(current.left, key);
+        if (c < 0)
+            return get(current.right, key);
+
+        return current.val;
+    }
+
 
     public void delete(K key) {
         root = delete(root, key);
