@@ -17,4 +17,41 @@ public class MyHashTable<K, V>{
             return "{"+ key + " " + value + "}";
         }
     }
+
+    private HashNode<K, V>[] chainArray;
+    private int  N = 11;
+    private int size;
+
+    public MyHashTable(){
+
+    }
+
+    public MyHashTable(int N){
+
+    }
+
+    private int hash(K key){
+
+    }
+
+    public void put(K key, V value){
+
+    }
+
+    public V get(K key){
+
+    }
+
+    public V remove(K key){
+
+    }
+
+    public boolean contains(V value){
+
+    }
+
+    public K getKey(V value){
+
+    }
+
 }
