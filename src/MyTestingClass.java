@@ -36,7 +36,7 @@ class MyTestingForHashTable {
             int id = random.nextInt(10000);
             String name = "Name" + random.nextInt(10000);
             MyTestingClass key = new MyTestingClass(id, name);
-            table.put(key, "Value" + i);
+            table.put(key, "Value");
         }
 
         // Print the number of elements in each bucket
