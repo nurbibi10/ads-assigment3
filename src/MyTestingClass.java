@@ -6,10 +6,7 @@ public class MyTestingClass {
 
         Random random = new Random();
 
-        for (int i = 0; i < 10000; i++) {
-            nabi.put(new MyTestingClass(RandomString.randomString(7), random.nextInt(10000)),
-                    random.nextInt(10000));
-        }
+
 
 
     }

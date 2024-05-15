@@ -35,9 +35,6 @@ public class BinaryST<K extends Comparable<K>, V> {
 
     private V get(Node current, K key) {
         int c = key.compareTo(current.key);
-        if (current == null) {
-            return null;
-        }
         if (c < 0)
             return get(current.left, key);
         else if (c > 0)
